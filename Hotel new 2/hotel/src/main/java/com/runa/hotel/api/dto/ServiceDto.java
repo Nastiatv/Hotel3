@@ -14,7 +14,7 @@ public class ServiceDto extends ADto {
 
 	private String name;
 
-	private Long roomHistoryId;
+	private List<RoomHistoryDto> roomHistories;
 
 	public static List<ServiceDto> convertList(List<Service> entities) {
 		List<ServiceDto> services = new ArrayList<>();
@@ -24,9 +24,7 @@ public class ServiceDto extends ADto {
 			dto.setName(entity.getName());
 			dto.setDailyPrice(entity.getDailyPrice());
 			dto.setStatus(entity.getStatus());
-			if (entity.getRoomHistory() != null) {
-				dto.setRoomHistoryId(entity.getRoomHistory().getId());
-			}
+			dto.setRoomHistories(RoomHistoryDto.convertList(entity.getRoomHistories()));
 			services.add(dto);
 		}
 		return services;
@@ -40,10 +38,10 @@ public class ServiceDto extends ADto {
 			dto.setName(entity.getName());
 			dto.setDailyPrice(entity.getDailyPrice());
 			dto.setStatus(entity.getStatus());
-			if (entity.getRoomHistory() != null) {
-				dto.setRoomHistoryId(entity.getRoomHistory().getId());
+			if (entity.getRoomHistories() != null) {
+				dto.setRoomHistories(RoomHistoryDto.convertList(entity.getRoomHistories()));
 			} else {
-				dto.setRoomHistoryId(null);
+				dto.setRoomHistories(null);
 			}
 		} else {
 			dto.setId(null);
@@ -84,12 +82,13 @@ public class ServiceDto extends ADto {
 		this.status = Status.valueOf(status);
 	}
 	
-	public Long getRoomHistoryId() {
-		return roomHistoryId;
+
+	public List<RoomHistoryDto> getRoomHistories() {
+		return roomHistories;
 	}
 
-	public void setRoomHistoryId(Long roomHistoryId) {
-		this.roomHistoryId = roomHistoryId;
+	public void setRoomHistories(List<RoomHistoryDto> list) {
+		this.roomHistories = list;
 	}
 
 	public ServiceDto(Service service) {
@@ -97,29 +96,10 @@ public class ServiceDto extends ADto {
 		this.dailyPrice = service.getDailyPrice();
 		this.status = Status.valueOf(service.getStatus());
 		this.name = service.getName();
-		this.roomHistoryId=service.getRoomHistory().getId();
-	}
+		}
 
 	public ServiceDto() {
 	}
-
-//	public static List<Service> convertListDtoToEntities(List<ServiceDto> ListDto) {
-//		List<Service> services = new ArrayList<>();
-//		for (ServiceDto dto : ListDto) {
-//			Service service = new Service();
-//			dto.setId(entity.getId());
-//			dto.setName(entity.getName());
-//			dto.setDailyPrice(entity.getDailyPrice());
-//			dto.setStatus(entity.getStatus());
-//			if (entity.getRoomHistory() != null) {
-//				dto.setRoomHistoryId(entity.getRoomHistory().getId());
-//			}
-//			services.add(dto);
-//		}
-//		return services;
-//	}
-//		return null;
-//	}
 
 	
 

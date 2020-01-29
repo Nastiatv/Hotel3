@@ -1,5 +1,7 @@
 package com.runa.hotel.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,7 +36,7 @@ public class Service extends AEntity {
 	@JoinTable(name = "relation_history_service", 
 	joinColumns = @JoinColumn(name = "guest_id", referencedColumnName = "id"), 
 	inverseJoinColumns = @JoinColumn(name = "room_history_id", referencedColumnName = "id"))
-	private RoomHistory roomHistory;
+	private List<RoomHistory> roomHistories;
 	
 	public Integer getDailyPrice() {
 		return dailyPrice;
@@ -69,12 +71,14 @@ public class Service extends AEntity {
 	public Service() {
 	}
 
-	public RoomHistory getRoomHistory() {
-		return roomHistory;
+	public List<RoomHistory> getRoomHistories() {
+		return roomHistories;
 	}
 
-	public void setRoomHistory(RoomHistory roomHistory) {
-		this.roomHistory = roomHistory;
+	public void setRoomHistory(List<RoomHistory> roomHistories) {
+		this.roomHistories = roomHistories;
 	}
+
+	
 	
 	}

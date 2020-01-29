@@ -40,7 +40,8 @@ public class GuestService implements IGuestService {
 
 	@Override
 	public void updateGuest(Long id, GuestDto guestDto) {
-		Guest existingGuest = guestDao.getAll().stream().filter(u -> u.getId().equals(id)).collect(Collectors.toList())
+		Guest existingGuest = guestDao.getAll().stream().filter(u -> u.getId().equals(id))
+				.collect(Collectors.toList())
 				.get(0);
 		if (!StringUtils.isEmpty(guestDto.getId())) {
 			existingGuest.setId(guestDto.getId());
