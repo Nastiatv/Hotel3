@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guests page</title>
+<link href="../css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+	<h1>Our guests:</h1>
+	<br />
+	<div id="wrapper">
+		<div th:each="guest: ${guestList}" class="guestblock" >
+			<p th:text="${guest.id}"></p>
+			<img th:src="@{'../img/' + ${guest.id} + '.jpg'}"
+			th:alt="${guest.id}" alt="" class="image" />
+			</div>
+	</div>
+</body>
+</html>
