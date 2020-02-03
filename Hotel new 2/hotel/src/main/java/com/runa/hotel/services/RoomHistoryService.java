@@ -31,7 +31,6 @@ public class RoomHistoryService implements IRoomHistoryService {
 	public RoomHistoryDto addRoomHistory(RoomHistoryDto roomHistoryDto) {
 		RoomHistory roomHistory = new RoomHistory();
 		roomHistory.setRoom(roomDao.get(roomHistoryDto.getRoomId()));
-//		roomHistory.setGuestId(roomHistoryDto.getGuestId());
 		return RoomHistoryDto.entityToDto(roomHistoryDao.create(roomHistory));
 	}
 
@@ -45,9 +44,6 @@ public class RoomHistoryService implements IRoomHistoryService {
 		if (!StringUtils.isEmpty(roomHistoryDto.getRoomId())) {
 			roomHistory.setRoom(roomDao.get(roomHistoryDto.getRoomId()));
 		}
-//		if (roomHistory.getGuestId() != null) {
-//			roomHistory.setGuestId(roomHistoryDto.getGuestId());
-//		}
 		roomHistoryDao.update(roomHistory);
 	}
 

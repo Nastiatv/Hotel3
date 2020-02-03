@@ -23,10 +23,21 @@ public class Guest extends AEntity {
 	inverseJoinColumns = @JoinColumn(name = "room_history_id", referencedColumnName = "id"))
 	private List<RoomHistory> roomHistories;
 
+	
 	public Guest(Long id) {
 		this.id = id;
 	}
 
 	public Guest() {
 	}
+	
+
+	public List<RoomHistory> getRoomHistories() {
+		return roomHistories;
+	}
+
+	public void setRoomHistories(List<RoomHistory> roomHistories) {
+		this.roomHistories = roomHistories;
+	}
+
 }

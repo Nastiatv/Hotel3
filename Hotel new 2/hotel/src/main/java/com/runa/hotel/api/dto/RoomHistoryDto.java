@@ -2,7 +2,6 @@ package com.runa.hotel.api.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.runa.hotel.entities.RoomHistory;
 
 public class RoomHistoryDto extends ADto {
@@ -36,9 +35,9 @@ public class RoomHistoryDto extends ADto {
 	public static RoomHistory dtoToEntity(RoomHistoryDto dto) {
 		RoomHistory roomHistory = new RoomHistory();
 		roomHistory.setId(dto.getId());
-//		roomHistory.setGuestId(dto.getGuestId());
-//		roomHistory.setRoomId(dto.getRoomId());
-//		roomHistory.setServices(ServiceDto.convertList(dto.getServices()));
+		roomHistory.setRoom(RoomHistoryDto.dtoToEntity(dto).getRoom());
+		roomHistory.setGuests(RoomHistoryDto.dtoToEntity(dto).getGuests());
+		roomHistory.setServices(RoomHistoryDto.dtoToEntity(dto).getServices());
 		return roomHistory;
 	}
 

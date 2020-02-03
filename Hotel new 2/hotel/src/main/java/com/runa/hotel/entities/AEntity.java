@@ -1,6 +1,5 @@
 package com.runa.hotel.entities;
 
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,7 +9,6 @@ import javax.persistence.MappedSuperclass;
 public abstract class AEntity {
 	
 	
-	@Column(name = "id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;

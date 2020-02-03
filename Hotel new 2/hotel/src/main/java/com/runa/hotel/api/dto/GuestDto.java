@@ -40,7 +40,7 @@ public class GuestDto extends ADto {
 		dto.setId(entity.getId());
 		if (entity.getId() != null) {
 			dto.setId(entity.getId());
-		} else {
+			} else {
 			dto.setId(null);
 		}
 		return dto;

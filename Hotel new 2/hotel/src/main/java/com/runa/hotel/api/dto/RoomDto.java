@@ -21,7 +21,6 @@ public class RoomDto extends ADto {
 			dto.setCapacity(entity.getCapacity());
 			dto.setDailyPrice(entity.getDailyPrice());
 			dto.setStatus(entity.getStatus());
-			dto.setRoomHistories(RoomHistoryDto.convertList(entity.getRoomHistories()));
 			rooms.add(dto);
 		}
 		return rooms;
@@ -35,8 +34,7 @@ public class RoomDto extends ADto {
 			dto.setCapacity(entity.getCapacity());
 			dto.setDailyPrice(entity.getDailyPrice());
 			dto.setStatus(entity.getStatus());
-			dto.setRoomHistories(RoomHistoryDto.convertList(entity.getRoomHistories()));
-		} else {
+			} else {
 			dto.setId(null);
 		}
 		return dto;
@@ -48,7 +46,6 @@ public class RoomDto extends ADto {
 		room.setCapacity(dto.getCapacity());
 		room.setDailyPrice(dto.getDailyPrice());
 		room.setStatus(dto.getStatus());
-//		roomHistory.setRoomHistory(ServiceDto.convertList(dto.getServices()));
 		return room;
 	}
 

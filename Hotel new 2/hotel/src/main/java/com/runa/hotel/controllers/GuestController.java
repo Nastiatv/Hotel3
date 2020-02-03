@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.runa.hotel.api.dto.GuestDto;
 import com.runa.hotel.api.service.IGuestService;
@@ -22,6 +23,15 @@ public class GuestController {
 
 	@Autowired
 	IGuestService guestService;
+
+//	@GetMapping
+//	public ModelAndView getAllGuests() {
+//		ModelAndView modelAndView = new ModelAndView();
+//		List<GuestDto> guests = guestService.getAllGuests();
+//		modelAndView.setViewName("guests");
+//		modelAndView.addObject("guestList", guests);
+//		return modelAndView;
+//	}
 
 	@GetMapping
 	public List<GuestDto> getAllGuests() {
@@ -35,14 +45,14 @@ public class GuestController {
 
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void updateGuest(@PathVariable Long id, @RequestBody GuestDto guestDto) {
-		 guestService.updateGuest(id, guestDto);
+		guestService.updateGuest(id, guestDto);
 	}
 
 	@GetMapping(value = "/{id}")
 	public GuestDto getGuest(@PathVariable Long id) {
 		return guestService.getGuestById(id);
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
 	public void deleteGuest(@PathVariable Long id) {
 		guestService.deleteGuestById(id);

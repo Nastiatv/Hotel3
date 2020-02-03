@@ -25,16 +25,14 @@ public class Service extends AEntity {
 	@Column(name = "daily_price")
 	private Integer dailyPrice;
 
-	@Column(name = "status")
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
-	@Column(name = "name")
 	private String name;
 
 	@ManyToMany
 	@JoinTable(name = "relation_history_service", 
-	joinColumns = @JoinColumn(name = "guest_id", referencedColumnName = "id"), 
+	joinColumns = @JoinColumn(name = "service_id", referencedColumnName = "id"), 
 	inverseJoinColumns = @JoinColumn(name = "room_history_id", referencedColumnName = "id"))
 	private List<RoomHistory> roomHistories;
 	

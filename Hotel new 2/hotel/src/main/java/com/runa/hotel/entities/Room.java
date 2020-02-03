@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,17 +22,16 @@ import com.runa.hotel.enums.Status;
 @Table(name = "rooms")
 public class Room extends AEntity {
 
-	@Column(name = "capacity")
 	private Integer capacity;
 
 	@Column(name = "daily_price")
 	private Integer dailyPrice;
 
-	@Column(name = "status")
+	
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
-	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<RoomHistory> roomHistories;
 
 	public String getStatus() {

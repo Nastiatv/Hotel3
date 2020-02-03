@@ -2,6 +2,7 @@ package com.runa.hotel.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -18,14 +19,14 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "room_histories")
 public class RoomHistory extends AEntity {
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "room_id", referencedColumnName = "id")
 	private Room room;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roomHistories")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roomHistories", cascade = CascadeType.ALL)
 	private List<Guest> guests;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roomHistories")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roomHistories", cascade = CascadeType.ALL)
 	private List<Service> services;
 
 	public RoomHistory() {

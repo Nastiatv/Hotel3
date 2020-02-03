@@ -9,11 +9,8 @@ import com.runa.hotel.enums.Status;
 public class ServiceDto extends ADto {
 
 	private int dailyPrice;
-
 	private Status status;
-
 	private String name;
-
 	private List<RoomHistoryDto> roomHistories;
 
 	public static List<ServiceDto> convertList(List<Service> entities) {
@@ -24,7 +21,6 @@ public class ServiceDto extends ADto {
 			dto.setName(entity.getName());
 			dto.setDailyPrice(entity.getDailyPrice());
 			dto.setStatus(entity.getStatus());
-			dto.setRoomHistories(RoomHistoryDto.convertList(entity.getRoomHistories()));
 			services.add(dto);
 		}
 		return services;
@@ -38,12 +34,7 @@ public class ServiceDto extends ADto {
 			dto.setName(entity.getName());
 			dto.setDailyPrice(entity.getDailyPrice());
 			dto.setStatus(entity.getStatus());
-			if (entity.getRoomHistories() != null) {
-				dto.setRoomHistories(RoomHistoryDto.convertList(entity.getRoomHistories()));
 			} else {
-				dto.setRoomHistories(null);
-			}
-		} else {
 			dto.setId(null);
 		}
 		return dto;
