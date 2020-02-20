@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.runa.hotel.api.dto.GuestDto;
 import com.runa.hotel.api.service.IGuestService;
@@ -23,19 +24,19 @@ public class GuestController {
 	@Autowired
 	IGuestService guestService;
 
-//	@GetMapping
-//	public ModelAndView getAllGuests() {
-//		ModelAndView modelAndView = new ModelAndView();
-//		List<GuestDto> guests = guestService.getAllGuests();
-//		modelAndView.setViewName("guests");
-//		modelAndView.addObject("guestList", guests);
-//		return modelAndView;
-//	}
-
 	@GetMapping
-	public List<GuestDto> getAllGuests() {
-		return guestService.getAllGuests();
+	public ModelAndView getAllGuests() {
+		ModelAndView modelAndView = new ModelAndView();
+		List<GuestDto> guests = guestService.getAllGuests();
+		modelAndView.setViewName("guests");
+		modelAndView.addObject("guestList", guests);
+		return modelAndView;
 	}
+
+//	@GetMapping
+//	public List<GuestDto> getAllGuests() {
+//		return guestService.getAllGuests();
+//	}
 
 	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public GuestDto addGuest(@RequestBody GuestDto guestDto) {

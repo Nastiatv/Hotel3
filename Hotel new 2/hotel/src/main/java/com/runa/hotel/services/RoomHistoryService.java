@@ -22,7 +22,6 @@ public class RoomHistoryService implements IRoomHistoryService {
 	private IRoomHistoryDao roomHistoryDao;
 	@Autowired
 	private IRoomDao roomDao;
-	
 
 	public List<RoomHistoryDto> getAllRoomHistories() {
 		return RoomHistoryDto.convertList(roomHistoryDao.getAll());

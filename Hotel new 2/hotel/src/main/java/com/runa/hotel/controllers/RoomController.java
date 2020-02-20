@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.runa.hotel.api.dto.RoomDto;
 import com.runa.hotel.api.service.IRoomService;
@@ -24,10 +25,18 @@ public class RoomController {
 	IRoomService roomService;
 
 	@GetMapping
-	public List<RoomDto> getAllRooms() {
-		return roomService.getAllRooms();
-
+	public ModelAndView getAllRooms() {
+		ModelAndView modelAndView = new ModelAndView();
+		List<RoomDto> rooms = roomService.getAllRooms();
+		modelAndView.setViewName("rooms");
+		modelAndView.addObject("roomList", rooms);
+		return modelAndView;
 	}
+	
+//	@GetMapping
+//	public List<RoomDto> getAllRooms() {
+//		return roomService.getAllRooms();
+//	}
 
 	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public RoomDto addRoom(@RequestBody RoomDto roomDto) {

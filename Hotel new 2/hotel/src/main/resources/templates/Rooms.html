@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rooms page</title>
+<link href="../css/styles-r.css" rel="stylesheet"/>
+</head>
+<body>
+	<h1>Our rooms:</h1>
+	<br />
+	<div id="wrapper">
+		<div th:each="room: ${roomList}" class="roomsblock" >
+			<p th:text="${room.id}"></p>
+			<img th:src="@{'../img/1' + ${room.id} + '.jpg'}"
+			th:alt="${room.id}" alt="" class="image" />
+			</div>
+	</div>
+</body>
+</html>
